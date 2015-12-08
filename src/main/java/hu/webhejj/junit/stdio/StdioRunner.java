@@ -15,6 +15,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
+/**
+ * <p>The test runner for running tests annotated with {@link StdioInputs}.</p>
+ *
+ * <p>A StdioRunner instance is created for each @StdioInputs value.</p>
+ */
 public class StdioRunner extends BlockJUnit4ClassRunner {
 
     private final String inputResource;
@@ -52,6 +57,14 @@ public class StdioRunner extends BlockJUnit4ClassRunner {
         };
     }
 
+    /**
+     * Open a classpath resource as InputStream, throwing an error if resource is not found.
+     *
+     * @param path path on the CLASSPATH relative to the class under test
+     * @param errorPrefix error message prefix to which path is appended
+     * @return InputStream of the resource at the spedified path
+     * @throws FileNotFoundException if resource is not found at the specified path
+     */
     protected InputStream openExistingStream(String path, String errorPrefix) throws FileNotFoundException {
         InputStream input = getTestClass().getJavaClass().getResourceAsStream(path);
         if(input == null) {
@@ -60,6 +73,12 @@ public class StdioRunner extends BlockJUnit4ClassRunner {
         return input;
     }
 
+    /**
+     * Perform the assertion, comparing the STDOUT to the expected output file.
+     *
+     * @param actualOutput a ByteArrayOutputStream of the actual output on STDOUT
+     * @throws IOException
+     */
     protected void assertCorrectOutput(ByteArrayOutputStream actualOutput) throws IOException {
 
         BufferedReader actualLines = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(actualOutput.toByteArray())));

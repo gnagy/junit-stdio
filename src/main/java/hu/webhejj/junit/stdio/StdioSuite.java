@@ -8,6 +8,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * <p>JUnit Suite for running tests annotated with {@link StdioInputs}.</p>
+ *
+ * <p>Example:</p>
+ *
+ * <pre>
+ *  &#064;RunWith(StdioSuite.class)
+ *  &#064;StdioInputs({"000", "001"})
+ *  public class ToUpperTest {}
+ *  </pre>
+ *
+ * @see StdioInputs
+ *
+ */
 public class StdioSuite extends Suite {
 
     public StdioSuite(Class<?> classUnderTest) throws InitializationError {
