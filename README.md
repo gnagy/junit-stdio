@@ -30,7 +30,7 @@ See also the [unit test that comes with this project](https://github.com/gnagy/j
 
 ## Downloads
 
-Available on [Maven Central](http://mvnrepository.com/artifact/hu.webhejj.junit.stdio/junit-stdio/).
+Available on [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22gradle-jena-plugin%22).
 
 
 ## License    
